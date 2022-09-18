@@ -28,7 +28,7 @@ int main()
 	}
 
 	int gcf = 1;
-	for (int i = 1; i <= min_num; i++)
+	for (int i = 1; i <= a; i++)
 	{
 		if (a % i == 0 && b % i == 0)
 		{
@@ -37,7 +37,7 @@ int main()
 	}
 
 	int lcm = 1;
-	for (int i = max_num; i < INF; i++)
+	for (int i = a; i < INF; i++)
 	{
 		if (i % a == 0 && i % b == 0)
 		{
