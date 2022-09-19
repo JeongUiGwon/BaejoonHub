@@ -6,7 +6,7 @@
 using namespace std;
 
 struct PERSON {
-    int age, idx;
+    int age;
     string name;
 };
 
@@ -14,9 +14,6 @@ bool operator<(PERSON a, PERSON b)
 {
     if (a.age < b.age) return true;
     if (a.age > b.age) return false;
-
-    if (a.idx < b.idx) return true;
-    if (a.idx > b.idx) return false;
     return false;
 }
 
@@ -37,10 +34,10 @@ int main()
         string name;
         cin >> age >> name;
 
-        people.push_back({ age, i, name });
+        people.push_back({ age, name });
     }
 
-    sort(people.begin(), people.end());
+    stable_sort(people.begin(), people.end());
 
     for (int i = 0; i < people.size(); i++)
     {
