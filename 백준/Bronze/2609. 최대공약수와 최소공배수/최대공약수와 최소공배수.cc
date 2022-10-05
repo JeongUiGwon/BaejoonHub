@@ -1,52 +1,29 @@
-#define _CRT_SECURE_NO_WARNINGS
+//2609번 최대공약수와 최소공배수
 #include <iostream>
-#include <cmath>
-#include <string>
-#include <vector>
-#define INF 987654321
+#include <algorithm>
 using namespace std;
 
-int main()
-{
-	ios_base::sync_with_stdio(false);
-	cin.tie(NULL);
-	cout.tie(NULL);
+// 유클리드 호제법
+// a, b 최대공약수 = b, a % b 최대공약수
+int gcd(int a, int b) {
+    // (a, b) = (b, a % b)
+    return a % b == 0 ? b : gcd(b, a % b);
+}
 
-	int a, b;
-	cin >> a >> b;
+// 최소 공배수
+int lcm(int a, int b) {
+    return (a * b) / gcd(a, b);
+}
 
-	int min_num, max_num;
-	if (a > b)
-	{
-		max_num = a;
-		min_num = b;
-	}
-	else
-	{
-		max_num = b;
-		min_num = a;
-	}
+int main() {
 
-	int gcf = 1;
-	for (int i = 1; i <= a; i++)
-	{
-		if (a % i == 0 && b % i == 0)
-		{
-			gcf = i;
-		}
-	}
+    int a, b;
+    cin >> a >> b;
 
-	int lcm = 1;
-	for (int i = a; i < INF; i++)
-	{
-		if (i % a == 0 && i % b == 0)
-		{
-			lcm = i;
-			break;
-		}
-	}
 
-	cout << gcf << '\n' << lcm;
+    cout << gcd(a, b) << endl;
+    cout << lcm(a, b) << endl;
 
-	return 0;
+
+    return 0;
 }
