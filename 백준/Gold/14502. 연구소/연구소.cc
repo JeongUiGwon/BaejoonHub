@@ -14,9 +14,7 @@ vector<pair<int, int>> virus;
 vector<pair<int, int>> walls;
 
 void bfs() {
-	for (int y = 0; y < N; y++)
-		for (int x = 0; x < M; x++)
-			tmp_map[y][x] = map[y][x];
+	memcpy(tmp_map, map, sizeof(map));
 
 	queue<pair<int, int>> q;
 	for (int i = 0; i < virus.size(); i++)
