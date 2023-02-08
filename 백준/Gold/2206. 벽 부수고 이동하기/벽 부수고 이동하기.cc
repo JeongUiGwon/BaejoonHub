@@ -14,9 +14,7 @@ int visited1[1003][1003];
 int visited2[1003][1003];
 int dy[] = {-1, 0, 1, 0};
 int dx[] = {0, -1, 0, 1};
-int crush_cnt = 1;
 int min_dist = INF;
-vector<pair<int, int>> walls;
 
 struct Node {
 	int y, x, cnt;
@@ -28,7 +26,7 @@ void bfs() {
 
 	q.push({ 0, 0, 0 });
 	visited1[0][0] = 1;
-	visited2[0][0] = 1;
+	//visited2[0][0] = 1;
 
 	while (!q.empty()) {
 		Node now = q.front();
@@ -75,11 +73,8 @@ int main() {
 		string map_row;
 		cin >> map_row;
 
-		for (int x = 0; x < M; x++) {
+		for (int x = 0; x < M; x++)
 			map[y][x] = map_row[x] - '0';
-
-			if (map[y][x] == 1) walls.push_back({ y, x });
-		}
 	}
 	
 	bfs();
