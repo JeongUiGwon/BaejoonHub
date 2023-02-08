@@ -26,7 +26,6 @@ void bfs() {
 
 	q.push({ 0, 0, 0 });
 	visited1[0][0] = 1;
-	//visited2[0][0] = 1;
 
 	while (!q.empty()) {
 		Node now = q.front();
@@ -37,6 +36,8 @@ void bfs() {
 
 			if (next.y < 0 || next.y >= N || next.x < 0 || next.x >= M) continue;
 
+			if (visited1[next.y][next.x] != 0) continue;
+
 			if (now.cnt == 1) {
 				if (map[next.y][next.x] == 1) continue;
 
@@ -46,7 +47,6 @@ void bfs() {
 				q.push(next);
 			}
 			else {
-				if (visited1[next.y][next.x] != 0) continue;
 
 				if (map[next.y][next.x] == 0) {
 					visited1[next.y][next.x] = visited1[now.y][now.x] + 1;
