@@ -30,25 +30,15 @@ int main()
 
 	sort(numbers.begin(), numbers.end());
 
-	double idx = (double)n * 0.15;
-	int val = idx;
+	int idx = round(n * 0.15);
 
-	if (idx - val >= 0.5) val++;
-
-	int cnt = 0;
-
-	for (int i = val; i < n - val; i++)
-	{
+	for (int i = idx; i < n - idx; i++)
 		res += numbers[i];
-		cnt++;
-	}
 
-	res /= (double)(cnt);
-	int res2 = res;
+	res /= (n - idx * 2);
+	res = round(res);
 
-	if ((res - res2) >= 0.5) res2++;
-
-	cout << res2;
+	cout << res;
 
 	return 0;
 }
