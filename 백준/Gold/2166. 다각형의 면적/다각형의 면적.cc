@@ -9,12 +9,12 @@ vector<pair<double, double>> polygon_coord;
 int main()
 {
 	int N;
-	cin >> N;
+	scanf("%d", &N);
 
 	for (int i = 0; i < N; i++)
 	{
 		double x, y;
-		cin >> x >> y;
+		scanf("%lf %lf", &x, &y);
 
 		polygon_coord.push_back({ x, y });
 	}
