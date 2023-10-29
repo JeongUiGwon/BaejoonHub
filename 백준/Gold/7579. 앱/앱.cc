@@ -50,7 +50,7 @@ int main()
 			if (j - cost[i] >= 0)
 				dp[i][j] = max(dp[i - 1][j], dp[i - 1][j - cost[i]] + memory[i]);
 			else
-				dp[i][j] = max(dp[i][j], dp[i - 1][j]);
+				dp[i][j] = dp[i - 1][j];
 		}
 	}
 
