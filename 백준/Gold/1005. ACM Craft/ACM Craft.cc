@@ -6,6 +6,7 @@
 using namespace std;
 
 int costs[1003], inDegree[1003], total_cost[1003];
+vector<int> graph[1003];
 
 int main()
 {
@@ -18,12 +19,12 @@ int main()
 
 	for (int tc = 0; tc < T; tc++)
 	{
-		vector<int> graph[1003];
 		queue<int> q;
 
 		for (int i = 0; i < 1003; i++)
 		{
 			inDegree[i] = 0;
+			graph[i].clear();
 		}
 
 		cin >> N >> K;
