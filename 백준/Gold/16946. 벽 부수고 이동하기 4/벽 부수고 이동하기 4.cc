@@ -12,7 +12,6 @@ int dy[4] = {-1, 0, 1, 0};
 int dx[4] = { 0, 1, 0, -1 };
 int group[MAX_N * MAX_M];
 int map[MAX_N][MAX_M];
-int visited[MAX_N][MAX_M];
 int ans[MAX_N][MAX_M];
 
 void bfs(int y, int x, int group_idx)
@@ -21,7 +20,6 @@ void bfs(int y, int x, int group_idx)
 	queue<pair<int,int>> q;
 	q.push({ y, x });
 	map[y][x] = group_idx;
-	visited[y][x] = 1;
 
 	while (!q.empty()) {
 		int cur_y = q.front().first;
@@ -34,12 +32,10 @@ void bfs(int y, int x, int group_idx)
 
 			if (next_y < 0 || next_y >= N || next_x < 0 || next_x >= M) continue;
 			if (map[next_y][next_x] != 0) continue;
-			if (visited[next_y][next_x]) continue;
 
 			ret++;
 			map[next_y][next_x] = group_idx;
 			q.push({ next_y, next_x });
-			visited[next_y][next_x] = 1;
 		}
 	}
 
