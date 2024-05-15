@@ -11,19 +11,23 @@ int W[MAX_N][MAX_N];
 int dp[MAX_N][1 << MAX_N];
 
 int dfs(int cur, int visited) {
+
+	// 탐색 완료한 경우,
 	if (visited == (1 << N) - 1) {
-		if (W[cur][0] == 0) return INF;
-		return W[cur][0];
+		if (W[cur][0] == 0) return INF;	// 이동 불가한 경우,
+		return W[cur][0];	// 이동 가능한 경우,
 	}
 
+	// 이미 탐색한 경우,
 	if (dp[cur][visited] != -1)
 		return dp[cur][visited];
 
-	dp[cur][visited] = INF;
+	dp[cur][visited] = INF;	// 초기화
 
+	// 모든 도시 탐색
 	for (int i = 0; i < N; i++) {
-		if (W[cur][i] == 0) continue;
-		if ((visited & (1 << i))) continue;
+		if (W[cur][i] == 0) continue;	// 이동 불가한 경우,
+		if ((visited & (1 << i))) continue;	// 이미 방문한 경우,
 
 		dp[cur][visited] = min(dp[cur][visited], W[cur][i] + dfs(i, visited | 1 << i));
 	}
